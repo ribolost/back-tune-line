@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package tuneline.card.v1;
+
+option java_package = "com.ribolost.games.tuneline.card.v1";
+option java_multiple_files = true;
+
+service CardService {
+
+  rpc CreateCards(CreateCardsRequest)
+      returns (CreateCardsResponse);
+}
+
+message CreateCardsRequest {
+  repeated string track_ids = 1;
+}
+
+message CreateCardsResponse {
+  repeated Card cards = 1;
+}
+
+message Card {
+  string id = 1;
+  string track_id = 2;
+  string title = 3;
+  string artist = 4;
+  int32 release_year = 5;
+  string qr_payload = 6;
+}
